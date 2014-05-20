@@ -1,0 +1,23 @@
+<div ng-show="loading">Loaging...</div>
+
+<div ng-show="resources" class="form-group">
+    <input ng-model="searchText" placeholder="Quick filter..."
+           class="form-control"/ >
+</div>
+
+<div ng-show="!loading">
+{{defects.length}} found. {{(defects| filter:searchText).length}} displayed.
+</div>
+<table ng-show="resources" data-provides="rowlink" class="table table-bordered">
+    <tr><th>Url</th>
+        <th>Name</th>
+    </tr>
+    <tr ng-repeat="resource in resources| filter:searchText">
+        <td>
+            <a href="#/resource/{{resource.url}}">{{resource.id}}</a>
+        </td>
+        <td>
+            <a href="#/resource/{{resource.url}}">{{resource.name}}</a>
+        </td>
+    </tr>
+</table>
